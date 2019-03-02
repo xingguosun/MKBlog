@@ -8,12 +8,12 @@
         <ul class="list-group">
             <li class="list-group-item" v-for="article in list" :key="article.id">
                 <Card :bordered="true">
-                    <p slot="">
-                        <router-link :to="{path:'/article/'+article.id}">
+                    <p slot="" :style="{'font-size':'1.1rem','font-weight':'500'}">
+                        <router-link :to="{path:'/development/article/'+article.id}">
                             {{article.title}}
                         </router-link>
                     </p>
-                    <p>{{article.body.substring(0,20)}}</p>
+                    <p :style="{'font-size': '1.02rem', 'margin-top': '10px'}">{{article.body.substring(0,50)}}...</p>
                 </Card>
             </li>
         </ul>
@@ -30,7 +30,7 @@
                 params: {timeDesc: true, take: 10}
             }).then(response => {
                 this.list = response.data;
-                // console.log(this.list);
+                console.log(this.list);
             })
         },
         data(){

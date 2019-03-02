@@ -16,15 +16,32 @@ let routes = [
         components : Carousel
     },
     {
+        path : '/development/docker/article/:id',
+        components : Article,
+        name : 'devDockerArticle'
+    },
+    {
+        path : '/development/php/article/:id',
+        components : Article,
+        name : 'devPhpArticle'
+    },
+    {
         path : '/development',
         components : List,
+        name : 'development',
         props : {
             category : 'development'
         }
     },
     {
+        path : '/algorithm/classic/article/:id',
+        components : Article,
+        name : 'algoClassicArticle'
+    },
+    {
         path : '/algorithm',
         components : List,
+        name : 'algorithm',
         props : {
             category : 'algorithm'
         }

@@ -10,43 +10,8 @@
     height: 100%;
     line-height: 600%
 }
-.layout-logo{
-    width: 250px;
-    height: 60px;
-    line-height: 60px;
-    background: #f9f9f9;
-    color: #000;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 3px;
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 20px;
-    -webkit-font-smoothing: antialiased;
-    animation-duration: 0.5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
-}
-.layout-logo .line{
-    width: 70px;
-    height: 2px;
-    background-color: #262a30;
-    animation-duration: 0.5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
-    transition: width .3s;
-}
 .layout-nav{
-    width: 380px;
+    width: 450px;
     margin: 0 auto;
     margin-right: 20px;
 }
@@ -78,45 +43,41 @@
 .scrollbar { 
     overflow-y: auto;
     overflow-x: hidden;
+    width: 250px;
+    max-width: 300px;
     min-width: 250px;
+    flex: 0 0 250px;
 } 
 .scrollbar::-webkit-scrollbar { 
 width: 6px; 
-background-color: rgba(217,217,217,0.3); 
+background-color: rgba(134, 2, 101, 0.699); 
 } 
 .scrollbar::-webkit-scrollbar-thumb { 
-background-color: rgba(217,217,217,0.3); 
+background-color: rgba(134, 2, 101, 0.699); 
 border-radius: 6px; 
 } 
 .scrollbar::-webkit-scrollbar-track { 
-box-shadow: inset 0 0 6px rgba(217,217,217,0.3); 
+box-shadow: inset 0 0 6px rgba(134, 2, 101, 0.699); 
 background-color: #fff; 
-}
-
-.collapsed-menu span{
-    width: 0px;
-    transition: width .2s ease;
-}
-.collapsed-menu i{
-    transform: translateX(5px);
-    transition: font-size .2s ease .2s, transform .2s ease .2s;
-    vertical-align: middle;
-    font-size: 22px;
 }
 </style>
 <template>
     <div class="layout">
-        <Layout>
-            <Header>
+        <Sider class="scrollbar" :style="{position: 'fixed', height: '100vh', left: 0, width: '250px', 'max-width': '300px'}">
+            
+            <sider-info  v-if="this.$route.path=='/' || this.$route.path=='/about'"></sider-info>
+            <sider-development  v-if="this.$route.name=='development' || this.$route.name=='devPhpArticle' || this.$route.name=='devDockerArticle'"></sider-development>
+            <sider-algorithm v-if="this.$route.name=='algorithm' || this.$route.name=='algoClassicArticle'"></sider-algorithm>
+        </Sider>
+        <Layout :style="{marginLeft: '250px'}">
+            <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)', padding: '0px'}">
                 <Menu class="layout-menu" mode="horizontal" theme="dark" active-name="1">
-                    <div class="layout-logo">
-                        <p class="line"></p>
-                            <router-link to="/">
-                                MonkeyKing's Blog
-                            </router-link>
-                        <p class="line"></p>
-                    </div>
                     <div class="layout-nav">
+                        <MenuItem name="0">
+                            <router-link to="/">
+                                <Icon type="md-home" />首页
+                            </router-link>
+                        </MenuItem>
                         <MenuItem name="1">
                             <router-link to="/development">
                                 <Icon type="md-code-working" />开发
@@ -140,90 +101,39 @@ background-color: #fff;
                     </div>
                 </Menu>
             </Header>
-            <layout>
-                <Sider class="scrollbar" collapsible :collapsed-width="78" v-model="isCollapsed" width=“250px” v-if="this.$route.path!='/' && this.$route.path!='/about'">
-                    <Menu active-name="" :open-names="['1']">
-                        <Submenu name="s1">
-                            <template slot="title">
-                                <i class="ivu-icon"><img width="20" src="../image/icon/php.png"/></i>PHP
-                            </template>
-                            <MenuGroup title=" - Laravel" on-select="">
-                                <MenuItem name="1-1">
-                                    <router-link to="/article/12">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;-- 安装Laravel
-                                    </router-link>
-                                </MenuItem>
-                                <MenuItem name="1-2">
-                                    <router-link to="/article/361">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;-- DB操作
-                                    </router-link>
-                                </MenuItem>
-                            </MenuGroup>
-                            <MenuGroup title="Item 2">
-                                <MenuItem name="1-3">Option 3</MenuItem>
-                                <MenuItem name="1-4">Option 4</MenuItem>
-                            </MenuGroup>
-                        </Submenu>
-                        <Submenu name="s2">
-                            <template slot="title">
-                                <Icon type="ios-filing" />
-                                Navigation Two
-                            </template>
-                            <MenuItem name="2-1">Option 5</MenuItem>
-                            <MenuItem name="2-2">Option 6</MenuItem>
-                            <Submenu name="s3">
-                                <template slot="title">Submenu</template>
-                                <MenuItem name="3-1">Option 7</MenuItem>
-                                <MenuItem name="3-2">Option 8</MenuItem>
-                            </Submenu>
-                        </Submenu>
-                        <Submenu name="s4">
-                            <template slot="title">
-                                <Icon type="ios-cog" />
-                                Navigation Three
-                            </template>
-                            <MenuItem name="4-1">Option 9</MenuItem>
-                            <MenuItem name="4-2">Option 10</MenuItem>
-                            <MenuItem name="4-3">Option 11</MenuItem>
-                            <MenuItem name="4-4">Option 12</MenuItem>
-                        </Submenu>
-                    </Menu>
-                </Sider>
-                <Content> 
-                    <!-- :style="{padding: '0 50px'}" -->
-                    <router-view>
-                        <!-- <Breadcrumb :style="{margin: '20px 0'}">
-                            <BreadcrumbItem>Home</BreadcrumbItem>
-                            <BreadcrumbItem>Components</BreadcrumbItem>
-                            <BreadcrumbItem>Layout</BreadcrumbItem>
-                        </Breadcrumb> -->
-                        <!-- <Card>
-                            <div style="min-height: 200px;">
-                                Content
-                            </div>
-                        </Card> -->
-                        <!-- <carousel></carousel> -->
-                    </router-view>
-                </Content>
-            </layout>
-            <Footer class="layout-footer-center">2019-2025 &copy; MonkeyKing</Footer>
+            <Content :style="{padding: '0', 'margin-top': '8px'}">
+                <router-view>
+                    <!-- <Breadcrumb :style="{margin: '20px 0'}">
+                        <BreadcrumbItem>Home</BreadcrumbItem>
+                        <BreadcrumbItem>Components</BreadcrumbItem>
+                        <BreadcrumbItem>Layout</BreadcrumbItem>
+                    </Breadcrumb> -->
+                    <!-- <Card>
+                        <div style="min-height: 200px;">
+                            Content
+                        </div>
+                    </Card> -->
+                    <!-- <carousel></carousel> -->
+                </router-view>
+            </Content>
         </Layout>
     </div>
 </template>
 <script>
+    import SiderInfo from './components/SiderInfo.vue';
+    import SiderDevelopment from './components/SiderDevelopment.vue';
+    import SiderAlgorithm from './components/SiderAlgorithm.vue';
     export default {
         data () {
             return {
                 isCollapsed: false
             };
+            console.log(this.$route);
         },
-        computed: {
-            menuitemClasses: function () {
-                return [
-                    'menu-item',
-                    this.isCollapsed ? 'collapsed-menu' : ''
-                ]
-            }
+        components: {
+            SiderInfo,
+            SiderDevelopment,
+            SiderAlgorithm
         }
     }
 </script>
