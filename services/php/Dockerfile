@@ -26,13 +26,13 @@ COPY ./pkg/cphalcon.tar.gz /home/cphalcon.tar.gz
 #  安装 PECL 拓展，这里我们安装的是Redis
 RUN pecl install /home/redis.tgz && echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
-#  安装第三方拓展，这里是 Phalcon 拓展
-RUN cd /home \
-    && tar -zxvf cphalcon.tar.gz \
-    && mv cphalcon-* phalcon \
-    && cd phalcon/build \
-    && ./install \
-    && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini
+# #  安装第三方拓展，这里是 Phalcon 拓展
+# RUN cd /home \
+#     && tar -zxvf cphalcon.tar.gz \
+#     && mv cphalcon-* phalcon \
+#     && cd phalcon/build \
+#     && ./install \
+#     && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/phalcon.ini
 
 #  安装 Composer
 ENV COMPOSER_HOME /root/composer

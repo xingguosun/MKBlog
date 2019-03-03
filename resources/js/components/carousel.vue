@@ -22,7 +22,7 @@
                 image0: require('../../image/1.jpg'),
                 image1: require('../../image/2.jpg'),
                 setting: {
-                    height: 400
+                    height: 600
                 }
             }
         }

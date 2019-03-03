@@ -11,8 +11,8 @@ class ArticleController extends Controller
     //
     public function index(Request $request){
         $list = [];
-        if($request->timeDesc && $request->take){
-            $list = Article::orderBy('created_at', 'desc')->take($request->take)->get();
+        if($request->column && $request->timeDesc && $request->take){
+            $list = Article::where('column', $request->column)->orderBy('created_at', 'desc')->take($request->take)->get();
         }elseif($request->searchByTag){
 
         }elseif($request->searchByTitle){

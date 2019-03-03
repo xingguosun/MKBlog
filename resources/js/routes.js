@@ -28,10 +28,7 @@ let routes = [
     {
         path : '/development',
         components : List,
-        name : 'development',
-        props : {
-            category : 'development'
-        }
+        name : 'development'
     },
     {
         path : '/algorithm/classic/article/:id',

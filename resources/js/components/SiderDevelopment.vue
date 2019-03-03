@@ -71,12 +71,12 @@
                 <MenuGroup title=" - 简介" on-select="">
                     <MenuItem name="1-1-1">
                         <router-link to="/development/docker/article/364">
-                            &nbsp;&nbsp;&nbsp;&nbsp;-- 是什么
+                            &nbsp;&nbsp;&nbsp;&nbsp;-- 什么是Docker
                         </router-link>
                     </MenuItem>
                     <MenuItem name="1-1-2">
-                        <router-link to="/development/php/article/361">
-                            &nbsp;&nbsp;&nbsp;&nbsp;-- 为什么
+                        <router-link to="/development/php/article/363">
+                            &nbsp;&nbsp;&nbsp;&nbsp;-- 为什么要用Docker
                         </router-link>
                     </MenuItem>
                 </MenuGroup>
@@ -118,29 +118,6 @@
                     <MenuItem name="1-3">Option 3</MenuItem>
                     <MenuItem name="1-4">Option 4</MenuItem>
                 </MenuGroup>
-            </Submenu>
-            <Submenu name="s2">
-                <template slot="title">
-                    <Icon type="ios-filing" />
-                    Navigation Two
-                </template>
-                <MenuItem name="2-1">Option 5</MenuItem>
-                <MenuItem name="2-2">Option 6</MenuItem>
-                <Submenu name="s3">
-                    <template slot="title">Submenu</template>
-                    <MenuItem name="3-1">Option 7</MenuItem>
-                    <MenuItem name="3-2">Option 8</MenuItem>
-                </Submenu>
-            </Submenu>
-            <Submenu name="s4">
-                <template slot="title">
-                    <Icon type="ios-cog" />
-                    Navigation Three
-                </template>
-                <MenuItem name="4-1">Option 9</MenuItem>
-                <MenuItem name="4-2">Option 10</MenuItem>
-                <MenuItem name="4-3">Option 11</MenuItem>
-                <MenuItem name="4-4">Option 12</MenuItem>
             </Submenu>
         </Menu>
     </div>
