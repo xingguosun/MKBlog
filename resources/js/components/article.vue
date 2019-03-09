@@ -51,10 +51,14 @@ export default {
             updateStyleH3.forEach((el) => {
                 el.style.cssText += 'font-size: 1.3rem; padding: 10px 0;';
             });
+            // document.querySelector('.article').innerHTML.replace('/ /g','');
+            // console.log(document.querySelector('.article').innerHTML);
         }
     },
     created(){
         this.fetchData();
+    },
+    mounted(){
         this.highlightCode();
         this.updateStyle();
     },

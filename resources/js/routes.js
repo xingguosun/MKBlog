@@ -49,6 +49,11 @@ let routes = [
     },
     // { path: '/user/:id', component: User },
     {
+        path : '/about/article/:id',
+        components : Article,
+        name : 'aboutArticle'
+    },
+    {
         path : '/about',
         components : List,
         props : {

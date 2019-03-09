@@ -65,7 +65,7 @@ background-color: #fff;
     <div class="layout">
         <Sider class="scrollbar" :style="{position: 'fixed', height: '100vh', left: 0, width: '250px', 'max-width': '300px'}">
             
-            <sider-info  v-if="this.$route.path=='/' || this.$route.path=='/about'"></sider-info>
+            <sider-info  v-if="this.$route.path=='/' || this.$route.name=='aboutArticle'"></sider-info>
             <sider-development  v-if="this.$route.name=='development' || this.$route.name=='devPhpArticle' || this.$route.name=='devDockerArticle'"></sider-development>
             <sider-algorithm v-if="this.$route.name=='algorithm' || this.$route.name=='algoClassicArticle'"></sider-algorithm>
         </Sider>
@@ -89,7 +89,7 @@ background-color: #fff;
                             </router-link>
                         </MenuItem>
                         <MenuItem name="3">
-                            <router-link to="/about">
+                            <router-link to="/about/article/365">
                                 <Icon type="ios-contact" />关于
                             </router-link>
                         </MenuItem>
@@ -128,7 +128,7 @@ background-color: #fff;
             return {
                 isCollapsed: false
             };
-            console.log(this.$route);
+            // console.log(this.$route);
         },
         components: {
             SiderInfo,
